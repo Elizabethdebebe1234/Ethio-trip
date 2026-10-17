@@ -1,103 +1,264 @@
+
 import Link from "next/link";
+
+
+const destinations = [
+  {
+    id: "Lalibela",
+    name: "Lalibela",
+    region: "Amhara Region",
+    category: "History & Culture",
+    description:
+      "Discover extraordinary rock-hewn churches and centuries of Ethiopian heritage.",
+    image:
+      "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    id: "Simien-mountains",
+    name: "Simien-mountains",
+    region: "Northern Ethiopia",
+    category: "Nature & Adventure",
+    description:
+      "Explore dramatic mountain peaks, breathtaking trails, and unique wildlife.",
+    image:
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    id: "Lake-tana",
+    name: "Lake-tana",
+    region: "Bahir Dar, Amhara",
+    category: "Nature & Culture",
+    description:
+      "Experience peaceful lake scenery, historic monasteries, and local life.",
+    image:
+      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
+  },
+];
+
+const experiences = [
+  {
+    icon: "✦",
+    title: "Cultural heritage",
+    description:
+      "Explore ancient architecture, traditions, local crafts, and living history.",
+  },
+  {
+    icon: "⌁",
+    title: "Nature & adventure",
+    description:
+      "Discover mountains, lakes, wildlife, and remarkable landscapes.",
+  },
+  {
+    icon: "◇",
+    title: "Food & local life",
+    description:
+      "Experience Ethiopian cuisine, coffee ceremonies, and welcoming communities.",
+  },
+];
 
 export default function HomePage() {
   return (
     <main>
-      <header className="navbar">
-        <div className="logo">🇪🇹 Ethio-Trip</div>
+      <header className="site-header">
+        <Link href="/" className="brand" aria-label="Ethio-Trip home">
+          <span className="brand-mark" aria-hidden="true">
+            E
+          </span>
+          <span>
+            Ethio<span className="brand-accent">Trip</span>
+            <small>YOUR ETHIOPIAN JOURNEY</small>
+          </span>
+        </Link>
 
-        <nav>
-          <Link href="/">Home</Link>
-          <Link href="/destinations">Destinations</Link>
-          <Link href="/hotels">Hotels</Link>
-          <Link href="/itinerary">My Trip</Link>
+        <nav className="main-nav" aria-label="Main navigation">
+          <Link href="/" className="nav-link active">
+            Home
+          </Link>
+          
+<Link href="/destinations" className="nav-link">
+  Destinations
+</Link>
+
+          <Link href="#experiences" className="nav-link">
+            Experiences
+          </Link>
+          <Link href="/hotels" className="nav-link">
+            Stays
+          </Link>
         </nav>
+
+        <Link href="/itinerary" className="header-cta">
+          Plan your trip <span aria-hidden="true">↗</span>
+        </Link>
       </header>
 
       <section className="hero">
+        <div className="hero-shade" />
+
         <div className="hero-content">
-          <p className="eyebrow">DISCOVER ETHIOPIA</p>
+          <div className="hero-label">
+            <span className="hero-label-dot" />
+            YOUR NEXT GREAT ADVENTURE
+          </div>
 
           <h1>
-            Your Journey Through
+            Ethiopia is calling.
             <br />
-            Ethiopia Starts Here 🇪🇹
+            <span>Come find your story.</span>
           </h1>
 
-          <p className="hero-text">
-            Discover breathtaking destinations, traditional culture, beautiful
-            hotels, and unforgettable experiences across Ethiopia.
+          <p className="hero-description">
+            From ancient wonders to extraordinary landscapes, discover
+            Ethiopia your way. Find your destinations, embrace the culture,
+            and create a journey worth remembering.
           </p>
 
-          <div className="hero-buttons">
-            <Link href="/destinations" className="primary-button">
-              Explore Destinations
+          <div className="hero-actions">
+            <Link href="#destinations" className="button-primary">
+              Explore Ethiopia <span aria-hidden="true">→</span>
             </Link>
-
-            <Link href="/itinerary" className="secondary-button">
-              Plan My Trip
+            <Link href="/itinerary" className="button-outline">
+              Build my itinerary
             </Link>
           </div>
+
+          <div className="hero-note">
+            <span className="hero-note-line" />
+            A land of origins, history, and unforgettable experiences
+          </div>
+        </div>
+
+        <div className="hero-side-note">
+          <span>09°01&apos; N</span>
+          <span className="side-note-divider" />
+          <span>ETHIOPIA · EAST AFRICA</span>
         </div>
       </section>
 
-      <section className="features">
-        <div className="feature-card">
-          <div className="feature-icon">📍</div>
+      <section className="intro-strip" aria-label="Discover Ethio-Trip">
+        <p>
+          <span className="gold-dot" />
+          ONE COUNTRY, COUNTLESS STORIES
+        </p>
+        <p>Culture. Nature. History. Adventure.</p>
+      </section>
 
-          <h2>Explore Destinations</h2>
+      <section className="destinations-section" id="destinations">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">PLACES THAT STAY WITH YOU</p>
+            <h2>
+              Discover the extraordinary<span>.</span>
+            </h2>
+            <p className="section-description">
+              Start with a few of Ethiopia&apos;s remarkable places. Your next
+              favorite destination might be closer than you think.
+            </p>
+          </div>
 
-          <p>
-            Discover amazing places including Lalibela, Gondar, Axum, and more.
-          </p>
+          <Link href="/destinations" className="text-link">
+            View all destinations <span aria-hidden="true">→</span>
+          </Link>
         </div>
 
-        <div className="feature-card">
-          <div className="feature-icon">🏨</div>
+        <div className="destination-grid">
+          {destinations.map((destination, index) => (
+            <article className="destination-card" key={destination.name}>
+              <Link
+                href={`/destinations/${destination.id}`}
+                className="destination-image-link"
+                aria-label={`Explore ${destination.name}`}
+              >
+                <div
+                  className="destination-image"
+                  style={{ backgroundImage: `url("${destination.image}")` }}
+                  role="img"
+                  aria-label={`${destination.name} landscape`}
+                />
+                <span className="destination-number">
+                  0{index + 1}
+                </span>
+                <span className="destination-arrow" aria-hidden="true">
+                  ↗
+                </span>
+              </Link>
 
-          <h2>Find Hotels</h2>
-
-          <p>
-            Explore accommodation options for different destinations and
-            budgets.
-          </p>
-        </div>
-
-        <div className="feature-card">
-          <div className="feature-icon">🗓️</div>
-
-          <h2>Plan Your Journey</h2>
-
-          <p>Create an itinerary and organize your Ethiopian adventure.</p>
+              <div className="destination-info">
+                <p className="destination-category">
+                  {destination.category}
+                </p>
+                <h3>{destination.name}</h3>
+                <p className="destination-region">
+                  <span aria-hidden="true">⌖</span> {destination.region}
+                </p>
+                <p className="destination-description">
+                  {destination.description}
+                </p>
+                <Link
+                  href={`/destinations/${index + 1}`}
+                  className="destination-link"
+                >
+                  Discover this place <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="about">
-        <div>
-          <p className="eyebrow">EXPERIENCE ETHIOPIA</p>
-
+      <section className="experiences-section" id="experiences">
+        <div className="experiences-heading">
+          <p className="eyebrow">TRAVEL YOUR WAY</p>
           <h2>
-            One Country.
+            More than a destination.
             <br />
-            Endless Experiences.
+            <span>A feeling.</span>
           </h2>
+          <p>
+            Whether you love history, seek the outdoors, or travel for food
+            and culture, there&apos;s a side of Ethiopia waiting for you.
+          </p>
         </div>
 
-        <p>
-          From the ancient rock-hewn churches of Lalibela to the breathtaking
-          landscapes of the Simien Mountains, Ethiopia offers travelers a unique
-          combination of history, culture, nature, and adventure.
-        </p>
+        <div className="experience-grid">
+          {experiences.map((experience) => (
+            <article className="experience-card" key={experience.title}>
+              <span className="experience-icon" aria-hidden="true">
+                {experience.icon}
+              </span>
+              <h3>{experience.title}</h3>
+              <p>{experience.description}</p>
+              <Link href="/destinations" className="experience-link">
+                Find your experience <span aria-hidden="true">→</span>
+              </Link>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <footer>
-        <h2>🇪🇹 Ethio-Trip</h2>
+      <section className="planner-banner">
+        <div>
+          <p className="eyebrow">YOUR ADVENTURE, YOUR WAY</p>
+          <h2>Dream it. Plan it. Experience Ethiopia.</h2>
+          <p>
+            Start putting your travel ideas together and create a journey
+            that reflects what you love.
+          </p>
+        </div>
+        <Link href="/itinerary" className="button-primary">
+          Start planning <span aria-hidden="true">→</span>
+        </Link>
+      </section>
 
-        <p>
-          Explore Ethiopia. Plan your journey. Create unforgettable memories.
-        </p>
-
-        <p className="copyright">© 2026 Ethio-Trip. All rights reserved.</p>
+      <footer className="site-footer">
+        <Link href="/" className="footer-brand">
+          Ethio<span>Trip</span>
+        </Link>
+        <p>Discover Ethiopia. Travel with purpose. Collect stories.</p>
+        <div className="footer-bottom">
+          <span>© 2026 Ethio-Trip</span>
+          <span>Made with care in Ethiopia ♡</span>
+        </div>
       </footer>
     </main>
   );
