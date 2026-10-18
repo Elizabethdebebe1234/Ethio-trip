@@ -10,6 +10,38 @@ export default function ItineraryPage() {
 const [startDate, setStartDate] = useState("");
 const [endDate, setEndDate] = useState("");
 
+const [selectedAccommodation, setSelectedAccommodation] = useState("");
+const [accommodationNights, setAccommodationNights] = useState(1);
+
+const accommodations = [
+  {
+    id: "guesthouse",
+    name: "Traditional Ethiopian Guesthouse",
+    type: "Guesthouse",
+    pricePerNight: 1200,
+  },
+  {
+    id: "standard-hotel",
+    name: "Comfortable City Hotel",
+    type: "Standard hotel",
+    pricePerNight: 2500,
+  },
+  {
+    id: "premium-hotel",
+    name: "Premium Hotel",
+    type: "Premium hotel",
+    pricePerNight: 4500,
+  },
+];
+
+const chosenAccommodation = accommodations.find(
+  (place) => place.id === selectedAccommodation
+);
+
+const accommodationCost = chosenAccommodation
+  ? chosenAccommodation.pricePerNight * accommodationNights
+  : 0;
+
   function addDestination(destination) {
     setSelectedDestinations((current) => {
       const alreadyAdded = current.some(
@@ -57,11 +89,56 @@ const tripDurationMessage = !hasValidDates
       ? `You have ${plannedTripDays - totalDays} extra day(s) to explore, relax, or add activities.`
       : "Perfect! Your dates match the suggested duration of your destinations.";
 
+      
+const dailySchedule = selectedDestinations.reduce(
+  (days, destination) => {
+    const startingDay = days.length;
+
+    const destinationDays = Array.from(
+      { length: destination.days },
+      (_, index) => {
+        const dayNumber = startingDay + index + 1;
+
+        let dateLabel = "";
+
+        if (startDate) {
+          const date = new Date(`${startDate}T00:00:00`);
+          date.setDate(date.getDate() + dayNumber - 1);
+
+          dateLabel = date.toLocaleDateString("en-ET", {
+            weekday: "short",
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          });
+        }
+
+        const highlights = destination.highlights || [];
+
+        return {
+          id: `${destination.id}-day-${index + 1}`,
+          dayNumber,
+          destinationName: destination.name,
+          dateLabel,
+          activity:
+            highlights[index % Math.max(highlights.length, 1)] ||
+            "Explore the destination at your own pace.",
+        };
+      }
+    );
+
+    return [...days, ...destinationDays];
+  },
+  []
+);
+
+
   const estimatedBudget = selectedDestinations.reduce(
     (total, destination) =>
       total + destination.days * destination.dailyBudget,
     0
   );
+  const totalEstimatedBudget = estimatedBudget + accommodationCost;
 
   return (
     <main className="itinerary-page">
@@ -78,7 +155,15 @@ const tripDurationMessage = !hasValidDates
         <Link href="/destinations" className="itinerary-back-link">
           Explore all destinations
         </Link>
+
+        <Link href="hotels" className="itinerary-back-link">
+          Explore Hotels
+        </Link>
+      
+
       </section>
+
+      
 
        <section className="trip-dates-section">
   <h2>When are you travelling?</h2>
@@ -100,6 +185,7 @@ const tripDurationMessage = !hasValidDates
         }}
       />
     </label>
+    
 
     <label>
       Return date
@@ -135,6 +221,119 @@ const tripDurationMessage = !hasValidDates
   </>
 )}
 </section>
+         
+         
+<section className="daily-schedule-section">
+  <div className="daily-schedule-heading">
+    <p className="eyebrow">YOUR TRAVEL PLAN</p>
+    <h2>Day-by-day itinerary</h2>
+    <p>
+      Your selected destinations organized into a suggested daily plan.
+    </p>
+  </div>
+
+  {dailySchedule.length === 0 ? (
+    <p className="daily-schedule-empty">
+      Add destinations below to create your daily travel schedule.
+    </p>
+  ) : (
+    <div className="daily-schedule-list">
+      {dailySchedule.map((day) => (
+        <article className="daily-schedule-card" key={day.id}>
+          <div className="daily-schedule-number">
+            <span>DAY</span>
+            <strong>{day.dayNumber}</strong>
+          </div>
+
+          <div className="daily-schedule-content">
+            {day.dateLabel && (
+              <p className="daily-schedule-date">{day.dateLabel}</p>
+            )}
+
+            <h3>{day.destinationName}</h3>
+
+            <p>{day.activity}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  )}
+
+  <p className="daily-schedule-note">
+    Activities are suggestions. Travel time between destinations is not
+    included in this schedule yet.
+  </p>
+</section>
+
+
+<section className="accommodation-section">
+  <p className="eyebrow">YOUR PLACE TO STAY</p>
+  <h2>Choose your accommodation</h2>
+  <p>
+    Select one stay for your trip and estimate the total accommodation cost.
+  </p>
+
+  <div className="accommodation-options">
+    {accommodations.map((place) => (
+      <article
+        className={`accommodation-card ${
+          selectedAccommodation === place.id ? "accommodation-selected" : ""
+        }`}
+        key={place.id}
+      >
+        <div>
+          <h3>{place.name}</h3>
+          <p>{place.type}</p>
+          <strong>
+            {place.pricePerNight.toLocaleString()} ETB
+          </strong>
+          <span> per night</span>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setSelectedAccommodation(place.id)}
+          aria-pressed={selectedAccommodation === place.id}
+        >
+          {selectedAccommodation === place.id ? "Selected" : "Choose stay"}
+        </button>
+      </article>
+    ))}
+  </div>
+
+  <div className="accommodation-nights">
+    <label htmlFor="accommodation-nights">
+      Number of nights
+    </label>
+
+    <input
+      id="accommodation-nights"
+      type="number"
+      min="1"
+      max="365"
+      value={accommodationNights}
+      onChange={(event) => {
+        const value = Number(event.target.value);
+
+        if (value >= 1 && value <= 365) {
+          setAccommodationNights(value);
+        }
+      }}
+    />
+  </div>
+
+  <div className="accommodation-total">
+    <span>Estimated accommodation cost</span>
+    <strong>
+      {accommodationCost.toLocaleString()} ETB
+    </strong>
+  </div>
+
+  <p className="accommodation-disclaimer">
+    These are sample planning prices, not live rates or confirmed reservations.
+  </p>
+</section>
+
 
       <section className="itinerary-layout">
         <div className="itinerary-choices">
@@ -221,7 +420,9 @@ const tripDurationMessage = !hasValidDates
 
             <div>
               <span>Estimated budget</span>
-              <strong>{estimatedBudget.toLocaleString()} ETB</strong>
+              <strong>
+  {totalEstimatedBudget.toLocaleString()} ETB
+</strong>
             </div>
           </div>
 

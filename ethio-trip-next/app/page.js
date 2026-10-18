@@ -59,38 +59,7 @@ const experiences = [
 export default function HomePage() {
   return (
     <main>
-      <header className="site-header">
-        <Link href="/" className="brand" aria-label="Ethio-Trip home">
-          <span className="brand-mark" aria-hidden="true">
-            E
-          </span>
-          <span>
-            Ethio<span className="brand-accent">Trip</span>
-            <small>YOUR ETHIOPIAN JOURNEY</small>
-          </span>
-        </Link>
-
-        <nav className="main-nav" aria-label="Main navigation">
-          <Link href="/" className="nav-link active">
-            Home
-          </Link>
-          
-<Link href="/destinations" className="nav-link">
-  Destinations
-</Link>
-
-          <Link href="#experiences" className="nav-link">
-            Experiences
-          </Link>
-          <Link href="/hotels" className="nav-link">
-            Stays
-          </Link>
-        </nav>
-
-        <Link href="/itinerary" className="header-cta">
-          Plan your trip <span aria-hidden="true">↗</span>
-        </Link>
-      </header>
+      
 
       <section className="hero">
         <div className="hero-shade" />
@@ -250,16 +219,7 @@ export default function HomePage() {
         </Link>
       </section>
 
-      <footer className="site-footer">
-        <Link href="/" className="footer-brand">
-          Ethio<span>Trip</span>
-        </Link>
-        <p>Discover Ethiopia. Travel with purpose. Collect stories.</p>
-        <div className="footer-bottom">
-          <span>© 2026 Ethio-Trip</span>
-          <span>Made with care in Ethiopia ♡</span>
-        </div>
-      </footer>
+      
     </main>
   );
 }

@@ -1,14 +1,22 @@
+
 import "./globals.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export const metadata = {
-  title: "Ethio-Trip",
-  description: "Explore Ethiopia and plan your perfect journey.",
+  title: "Ethio-Trip | Explore Ethiopia",
+  description:
+    "Discover Ethiopia's destinations, explore local experiences, and plan your journey with Ethio-Trip.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
