@@ -3178,3 +3178,11 @@ button.header-signin:disabled {
   border-radius: 10px;
   background: #fffdf8;
 }
+
+.destination-image {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center;
+}

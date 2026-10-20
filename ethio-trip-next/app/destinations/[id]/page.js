@@ -10,7 +10,7 @@ const destinations = [
     category: "History & Culture",
     duration: "2–3 days",
     image:
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1600&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlBAnVIdcBS7Kmy4wobnoTVYdCwz_i8JNLq-laUpBiyg&s=10",
     intro:
       "Step into one of Ethiopia's most remarkable historic destinations, known for its extraordinary rock-hewn churches and enduring spiritual traditions.",
     highlights: [
@@ -30,7 +30,7 @@ const destinations = [
     category: "Nature & Adventure",
     duration: "3–5 days",
     image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnf0bB3cnAQGqZxqDr3cbF9TJhMLGhkuw_sqLEijd2CA&s=10",
     intro:
       "Discover spectacular mountain scenery, dramatic cliffs, highland trails, and remarkable wildlife in one of Ethiopia's best-known natural landscapes.",
     highlights: [
@@ -50,7 +50,7 @@ const destinations = [
     category: "Nature & Culture",
     duration: "1–2 days",
     image:
-      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaQVwBB767dNsUXjA7PKfEgoPDBH0ikLgVD2yWV0S5uw&s=10",
     intro:
       "Slow down beside Ethiopia's largest lake, where waterside communities, birdlife, and historic monasteries create a memorable travel experience.",
     highlights: [
@@ -70,7 +70,7 @@ const destinations = [
     category: "History & Culture",
     duration: "1–2 days",
     image:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRbixl9TUGDnsOe3Phs24vHN6RZvbC6aX9GX50hf3aWQ&s=10",
     intro:
       "Explore a distinctive historic walled city with colorful streets, lively markets, and a rich tradition of culture and trade.",
     highlights: [
@@ -84,13 +84,13 @@ const destinations = [
       "Respect local customs and ask permission before photographing people or private spaces.",
   },
   {
-    id: "danakil",
+    id: "danakil-depression",
     name: "Danakil Depression",
     region: "Afar Region, Northeastern Ethiopia",
     category: "Nature & Adventure",
     duration: "3–4 days",
     image:
-      "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1600&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHeyhPZEcdGb6CgPDP5AKW1x7l4YffDj0Hz8wrIRff7g&s=10",
     intro:
       "Encounter dramatic desert terrain and striking geological formations in one of the world's most extreme environments.",
     highlights: [
@@ -110,7 +110,7 @@ const destinations = [
     category: "City & Food",
     duration: "1–3 days",
     image:
-      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1600&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwkahZR7SzQLiAkpiBg0PnNtaETvd4zEso3soU73fkuw&s=10",
     intro:
       "Discover Ethiopia's capital through its museums, coffee traditions, food culture, markets, and energetic city life.",
     highlights: [
@@ -130,7 +130,7 @@ const destinations = [
     category: "History & Culture",
     duration: "2–3 days",
     image:
-      "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1600&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWDE_JGou7PkyQ5zoLBj8GTZJuVVcBbi5aEVSNuuvvPA&s=10",
     intro:
       "Learn about a distinctive cultural landscape shaped by generations of community knowledge, stone terraces, and local traditions.",
     highlights: [
@@ -150,7 +150,7 @@ const destinations = [
     category: "Nature & Adventure",
     duration: "2–4 days",
     image:
-      "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1600&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2T6bEwJKG0UIZ9KUiNN3wjwaDNhe8XaDBzS61FeqEeg&s",
     intro:
       "Explore Ethiopian highlands, open moorlands, forests, and habitats known for distinctive wildlife and beautiful walking routes.",
     highlights: [
@@ -170,7 +170,7 @@ const destinations = [
     category: "History & Culture",
     duration: "1–2 days",
     image:
-      "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1600&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPuv7LaVv3ixhEXRMQFFsaLVJWLQ0pmjDIAL7_RKeS5w&s=10",
     intro:
       "Discover historic royal architecture and monuments that tell the story of an important period in Ethiopian history.",
     highlights: [

@@ -1,4 +1,3 @@
-
 const destinations = [
   {
     id: "lalibela",
@@ -7,6 +6,8 @@ const destinations = [
     category: "History & Culture",
     days: 2,
     dailyBudget: 1800,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlBAnVIdcBS7Kmy4wobnoTVYdCwz_i8JNLq-laUpBiyg&s=10",
     description:
       "Discover extraordinary rock-hewn churches and centuries of Ethiopian heritage.",
     highlights: [
@@ -22,6 +23,8 @@ const destinations = [
     category: "Nature & Adventure",
     days: 3,
     dailyBudget: 2500,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnf0bB3cnAQGqZxqDr3cbF9TJhMLGhkuw_sqLEijd2CA&s=10",
     description:
       "Explore dramatic mountain peaks, scenic hiking trails, and unique wildlife.",
     highlights: [
@@ -37,6 +40,8 @@ const destinations = [
     category: "Nature & Culture",
     days: 2,
     dailyBudget: 1500,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaQVwBB767dNsUXjA7PKfEgoPDBH0ikLgVD2yWV0S5uw&s=10",
     description:
       "Experience peaceful lake scenery, historic monasteries, and local life.",
     highlights: [
@@ -52,6 +57,8 @@ const destinations = [
     category: "History & Culture",
     days: 2,
     dailyBudget: 1600,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRbixl9TUGDnsOe3Phs24vHN6RZvbC6aX9GX50hf3aWQ&s=10",
     description:
       "Discover historic streets, traditional houses, and vibrant local markets.",
     highlights: [
@@ -67,6 +74,8 @@ const destinations = [
     category: "Nature & Adventure",
     days: 3,
     dailyBudget: 3500,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHeyhPZEcdGb6CgPDP5AKW1x7l4YffDj0Hz8wrIRff7g&s=10",
     description:
       "Discover extraordinary desert landscapes and colorful geological features.",
     highlights: [
@@ -82,6 +91,8 @@ const destinations = [
     category: "City & Food",
     days: 2,
     dailyBudget: 2000,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwkahZR7SzQLiAkpiBg0PnNtaETvd4zEso3soU73fkuw&s=10",
     description:
       "Explore museums, city landmarks, coffee culture, and Ethiopian cuisine.",
     highlights: [
@@ -97,6 +108,8 @@ const destinations = [
     category: "History & Culture",
     days: 2,
     dailyBudget: 1800,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWDE_JGou7PkyQ5zoLBj8GTZJuVVcBbi5aEVSNuuvvPA&s=10",
     description:
       "Learn about traditional settlements, stone terraces, and local heritage.",
     highlights: [
@@ -112,6 +125,8 @@ const destinations = [
     category: "Nature & Adventure",
     days: 3,
     dailyBudget: 2400,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2T6bEwJKG0UIZ9KUiNN3wjwaDNhe8XaDBzS61FeqEeg&s",
     description:
       "Explore highland landscapes, forests, and remarkable wildlife.",
     highlights: [
@@ -127,6 +142,8 @@ const destinations = [
     category: "History & Culture",
     days: 2,
     dailyBudget: 1700,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPuv7LaVv3ixhEXRMQFFsaLVJWLQ0pmjDIAL7_RKeS5w&s=10",
     description:
       "Discover historic castles, royal architecture, and centuries of Ethiopian history.",
     highlights: [

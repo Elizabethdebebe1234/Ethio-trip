@@ -1,39 +1,37 @@
-
+﻿
 import Link from "next/link";
+import Image from "next/image";
 
 const stays = [
   {
     id: 1,
     name: "Traditional Ethiopian Guesthouse",
-    location: "Lalibela",
     type: "Guesthouse",
     price: 1200,
     description:
       "A welcoming stay inspired by Ethiopian hospitality and local culture.",
     image:
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1000&q=85",
+      "/images/hotels/guesthouse.jpg",
   },
   {
     id: 2,
     name: "Comfortable City Hotel",
-    location: "Addis Ababa",
     type: "City hotel",
     price: 2500,
     description:
       "A practical base for exploring the capital, restaurants, and cultural attractions.",
     image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=85",
+      "/images/hotels/city-hotel.jpg",
   },
   {
     id: 3,
     name: "Premium Highland Retreat",
-    location: "Bahir Dar",
     type: "Retreat",
     price: 4500,
     description:
       "A more elevated accommodation concept for a relaxing highland escape.",
     image:
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1000&q=85",
+      "/images/hotels/highland-retreat.jpg",
   },
 ];
 
@@ -51,7 +49,7 @@ export default function HotelsPage() {
         </p>
 
         <Link href="/itinerary" className="hotels-cta">
-          Plan your journey →
+          Plan your journey â†’
         </Link>
       </section>
 
@@ -71,11 +69,14 @@ export default function HotelsPage() {
         <div className="hotels-grid">
           {stays.map((stay) => (
             <article className="hotel-card" key={stay.id}>
-              <img
-                src={stay.image}
-                alt={stay.name}
-                className="hotel-image"
-              />
+              <Image
+  src={stay.image}
+  alt={stay.name}
+  width={1000}
+  height={650}
+  sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw"
+  className="hotel-image"
+/>
 
               <div className="hotel-card-content">
                 <span className="hotel-type">{stay.type}</span>
@@ -83,7 +84,7 @@ export default function HotelsPage() {
                 <h3>{stay.name}</h3>
 
                 <p className="hotel-location">
-                  <span aria-hidden="true">⌖</span> {stay.location}
+                  <span aria-hidden="true">âŒ–</span> {stay.location}
                 </p>
 
                 <p className="hotel-description">
@@ -93,11 +94,11 @@ export default function HotelsPage() {
                 <div className="hotel-card-bottom">
                   <p className="hotel-price">
                     <strong>{stay.price.toLocaleString()} ETB</strong>
-                    <span>/ night · estimate</span>
+                    <span>/ night Â· estimate</span>
                   </p>
 
                   <Link href="/itinerary" className="hotel-select-link">
-                    Plan a stay →
+                    Plan a stay â†’
                   </Link>
                 </div>
               </div>
@@ -108,3 +109,4 @@ export default function HotelsPage() {
     </main>
   );
 }
+

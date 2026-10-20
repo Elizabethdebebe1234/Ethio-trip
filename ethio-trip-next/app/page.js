@@ -19,7 +19,7 @@ const destinations = [
     description:
       "Discover extraordinary rock-hewn churches and centuries of Ethiopian heritage.",
     image:
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=900&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlBAnVIdcBS7Kmy4wobnoTVYdCwz_i8JNLq-laUpBiyg&s=10",
   },
   {
     id: "Simien-mountains",
@@ -29,7 +29,7 @@ const destinations = [
     description:
       "Explore dramatic mountain peaks, breathtaking trails, and unique wildlife.",
     image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnf0bB3cnAQGqZxqDr3cbF9TJhMLGhkuw_sqLEijd2CA&s=10",
   },
   {
     id: "Lake-tana",
@@ -39,7 +39,7 @@ const destinations = [
     description:
       "Experience peaceful lake scenery, historic monasteries, and local life.",
     image:
-      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaQVwBB767dNsUXjA7PKfEgoPDBH0ikLgVD2yWV0S5uw&s=10",
   },
 ];
 
