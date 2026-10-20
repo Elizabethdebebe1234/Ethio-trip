@@ -21,9 +21,9 @@ export default async function CustomerPage() {
         </p>
 
         <div className="dashboard-actions">
-          <Link href="/destinations" className="dashboard-link">
-            Explore destinations
-          </Link>
+          <Link href="/customer/requests" className="dashboard-link">
+  My trip requests
+</Link>
           <Link href="/itinerary" className="dashboard-link">
             Plan your trip
           </Link>

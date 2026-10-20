@@ -3,6 +3,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSession } from "../../lib/auth";
 import SignOutButton from "../../components/SignOutButton";
+import GuideTripRequests from "../../components/GuideTripRequests";
+
 
 const preparationTasks = [
   {
@@ -59,6 +61,7 @@ export default async function GuidePage() {
         </div>
 
         <SignOutButton />
+        <GuideTripRequests />
       </section>
     </main>
   );

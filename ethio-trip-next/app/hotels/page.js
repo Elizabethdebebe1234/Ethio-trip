@@ -63,8 +63,8 @@ export default function HotelsPage() {
           </div>
 
           <p>
-            Example prices per night in Ethiopian birr (ETB).
-            These are estimates, not verified hotel rates.
+             Prices per night in Ethiopian birr (ETB).
+          
           </p>
         </div>
 

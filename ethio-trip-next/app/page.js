@@ -1,6 +1,14 @@
 
 import Link from "next/link";
 
+export const metadata = {
+  title: "Discover Ethiopia",
+  description:
+    "Plan your Ethiopian adventure. Explore historic sites, cultural attractions, and breathtaking destinations.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 const destinations = [
   {
@@ -164,11 +172,11 @@ export default function HomePage() {
                   {destination.description}
                 </p>
                 <Link
-                  href={`/destinations/${index + 1}`}
-                  className="destination-link"
-                >
-                  Discover this place <span aria-hidden="true">→</span>
-                </Link>
+                    href={`/destinations/${destination.id.toLowerCase()}`}
+                      className="destination-link"
+                    >
+                Discover this place <span aria-hidden="true">→</span>
+                         </Link>
               </div>
             </article>
           ))}

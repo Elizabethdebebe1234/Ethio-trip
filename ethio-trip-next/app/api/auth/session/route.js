@@ -8,5 +8,6 @@ export async function GET() {
   return NextResponse.json({
     authenticated: Boolean(session),
     role: session?.role ?? null,
+    username: session?.username ?? null,
   });
 }

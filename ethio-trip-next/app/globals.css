@@ -3036,3 +3036,145 @@ button.header-signin:disabled {
   cursor: wait;
   opacity: 0.65;
 }
+
+.customer-request-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.customer-request-card {
+  padding: 1.25rem;
+  border: 1px solid #e5dfd3;
+  border-radius: 14px;
+  background: #fffdf8;
+}
+
+.customer-request-card h2 {
+  margin-top: 0;
+}
+
+.trip-status {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.trip-status-pending {
+  background: #fff0c2;
+  color: #805b00;
+}
+
+.trip-status-confirmed {
+  background: #dff5e5;
+  color: #176534;
+}
+
+.trip-status-preparing {
+  background: #e1edff;
+  color: #174b91;
+}
+
+.trip-status-completed {
+  background: #e8e5f7;
+  color: #514080;
+}
+
+.request-note {
+  color: #6b6257;
+  font-size: 0.85rem;
+}
+
+.trip-submit-area {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5dfd3;
+}
+
+.trip-submit-button {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background: #7b1e1e;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.trip-submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.trip-submit-area [role="status"] {
+  margin-top: 0.75rem;
+  color: #176534;
+  font-weight: 600;
+}
+
+.guide-requests-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5dfd3;
+}
+
+.guide-request-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.guide-request-card {
+  padding: 1.25rem;
+  border: 1px solid #e5dfd3;
+  border-radius: 14px;
+  background: #fffdf8;
+}
+
+.guide-request-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.guide-request-heading h3 {
+  margin: 0;
+}
+
+.guide-request-heading p,
+.guide-request-details p {
+  margin: 0.5rem 0;
+}
+
+.guide-request-details {
+  margin: 1rem 0;
+  overflow-wrap: anywhere;
+}
+
+.guide-status-label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.guide-status-label select {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.7rem;
+  border: 1px solid #cfc5b6;
+  border-radius: 8px;
+  background: white;
+  color: #222;
+}
+
+.guide-requests-empty {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #fffdf8;
+}

@@ -1,5 +1,5 @@
 
-export const destinations = [
+const destinations = [
   {
     id: "lalibela",
     name: "Lalibela",
@@ -136,3 +136,7 @@ export const destinations = [
     ],
   },
 ];
+
+export const availableDestinations = destinations;
+export { destinations };
+export default destinations;

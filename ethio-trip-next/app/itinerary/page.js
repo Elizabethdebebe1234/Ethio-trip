@@ -3,10 +3,20 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { destinations as availableDestinations } from "../../lib/destinations";
+import { useRouter } from "next/navigation";
+import destinations from "../../lib/destinations";
+import { createTripRequest } from "../../lib/tripRequests";
+import { availableDestinations } from "../../lib/destinations";
 
 export default function ItineraryPage() {
   const [selectedDestinations, setSelectedDestinations] = useState([]);
+  const [requestSubmitted, setRequestSubmitted] = useState(false);
+
+  const router = useRouter();
+
+const [submissionMessage, setSubmissionMessage] = useState("");
+const [isSubmitting, setIsSubmitting] = useState(false);
+
 const [startDate, setStartDate] = useState("");
 const [endDate, setEndDate] = useState("");
 
@@ -61,6 +71,69 @@ const accommodationCost = chosenAccommodation
       current.filter((item) => item.id !== destinationId)
     );
   }
+
+  async function handleSubmitTrip() {
+  setSubmissionMessage("");
+
+  if (selectedDestinations.length === 0) {
+    setSubmissionMessage("Please add at least one destination.");
+    return;
+  }
+
+  if (!hasValidDates) {
+    setSubmissionMessage(
+      "Please choose valid departure and return dates."
+    );
+    return;
+  }
+
+  setIsSubmitting(true);
+
+  try {
+    const response = await fetch("/api/auth/session", {
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      setSubmissionMessage("Unable to verify your sign-in. Please try again.");
+      return;
+    }
+
+    const session = await response.json();
+
+    if (!session.authenticated || session.role !== "customer") {
+      router.push("/signin");
+      return;
+    }
+
+    createTripRequest({
+      startDate,
+      endDate,
+      destinations: selectedDestinations.map((destination) => ({
+        id: destination.id,
+        name: destination.name,
+        days: destination.days,
+      })),
+      accommodation: chosenAccommodation
+        ? chosenAccommodation.name
+        : "Not selected",
+      accommodationNights,
+      estimatedBudget: totalEstimatedBudget,
+    });
+
+    setRequestSubmitted(true);
+
+    setSubmissionMessage(
+      "Your trip request has been submitted with Pending status."
+    );
+  } catch {
+    setSubmissionMessage(
+      "Could not submit your trip request. Please try again."
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+}
 
   const totalDays = selectedDestinations.reduce(
     (total, destination) => total + destination.days,
@@ -348,7 +421,7 @@ const dailySchedule = selectedDestinations.reduce(
               (item) => item.id === destination.id
             );
 
-            return (
+            return ( 
               <article
                 className="itinerary-choice"
                 key={destination.id}
@@ -402,6 +475,22 @@ const dailySchedule = selectedDestinations.reduce(
                   >
                     Remove
                   </button>
+
+                  <div className="trip-submit-area">
+ 
+
+{submissionMessage && (
+  <p role="status" aria-live="polite">
+    {submissionMessage}
+  </p>
+)}
+
+  {submissionMessage && (
+    <p role="status" aria-live="polite">
+      {submissionMessage}
+    </p>
+  )}
+</div>
                 </li>
               ))}
             </ul>
@@ -430,6 +519,25 @@ const dailySchedule = selectedDestinations.reduce(
             Budget figures are illustrative planning estimates, not live
             prices or confirmed quotations.
           </p>
+
+          <button
+  type="button"
+  className="trip-submit-button"
+  onClick={handleSubmitTrip}
+  disabled={isSubmitting || requestSubmitted}
+>
+  {requestSubmitted
+    ? "Request Submitted"
+    : isSubmitting
+      ? "Submitting..."
+      : "Submit Trip Request"}
+</button>
+
+{submissionMessage && (
+  <p role="status" aria-live="polite">
+    {submissionMessage}
+  </p>
+)}
 
           <button
             type="button"
