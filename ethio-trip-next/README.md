@@ -1,36 +1,165 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🇪🇹 Ethio-Trip — Discover Ethiopia
 
-## Getting Started
+**Explore Ethiopia. Plan your journey. Experience its heritage.**
 
-First, run the development server:
+Ethio-Trip is a Next.js tourism web application designed to help travelers discover Ethiopia's beautiful destinations, explore cultural and historical attractions, and plan memorable trips.
+
+## 🌐 Live Demo
+
+**[Visit Ethio-Trip](https://ethio-trip-coral.vercel.app/)**
+
+## ✨ Features
+
+- **Destination Explorer:** Discover Ethiopian destinations, including Lalibela, the Simien Mountains, Lake Tana, Harar, the Danakil Depression, Addis Ababa, Konso, the Bale Mountains, and Gondar.
+- **Destination Search and Filtering:** Explore destinations by category and find places of interest.
+- **Destination Details:** Learn about destinations, highlights, and travel recommendations.
+- **Trip Planning:** Plan trips using destination information, estimated durations, and daily budgets.
+- **Responsive Design:** Browse the application on desktop, tablet, and mobile devices.
+- **API Integration:** Load destination data through Next.js API routes.
+- **Ethiopian Identity:** A travel experience inspired by Ethiopia's cultural heritage, history, and natural beauty.
+- **User-Friendly Interface:** Clear navigation and destination cards make exploring easier.
+
+## 🛠️ Technologies Used
+
+- **Next.js** — React framework for web applications
+- **React** — Component-based user interfaces
+- **JavaScript** — Application functionality
+- **CSS** — Layout, styling, and responsive design
+- **SWR** — Client-side data fetching and revalidation
+- **Next.js API Routes** — Destination data endpoints
+- **Git and GitHub** — Version control and source code management
+- **Vercel** — Deployment and hosting
+
+## 📍 Featured Destinations
+
+| Destination | Category |
+|---|---|
+| Lalibela | History & Culture |
+| Simien Mountains | Nature & Adventure |
+| Lake Tana | Nature & Culture |
+| Harar | History & Culture |
+| Danakil Depression | Nature & Adventure |
+| Addis Ababa | City & Food |
+| Konso Cultural Landscape | History & Culture |
+| Bale Mountains | Nature & Adventure |
+| Gondar | History & Culture |
+
+## 🚀 Run Locally
+
+### Prerequisites
+
+- Node.js
+- npm
+- Git
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Elizabethdebebe1234/Ethio-trip.git
+   ```
+
+2. Navigate to the Next.js application directory:
+
+   ```bash
+   cd Ethio-trip/ethio-trip-next
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open the application in your browser:
+
+   ```text
+   http://localhost:3000
+   ```
+
+### Production Build
+
+To verify that the application can be built for production, run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To start the production server locally:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📂 Project Structure
 
-## Learn More
+```text
+ethio-trip-next/
+├── app/
+│   ├── api/
+│   │   └── destinations/
+│   │       └── route.js
+│   ├── destinations/
+│   ├── globals.css
+│   ├── layout.js
+│   └── page.js
+├── lib/
+│   └── destinations.js
+├── public/
+├── README.md
+├── AUTH.md
+├── DATA.md
+├── PERF.md
+└── package.json
+```
 
-To learn more about Next.js, take a look at the following resources:
+*Note: The structure above highlights the main files and folders; your application may contain additional routes and components.*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧩 API Endpoint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The destination API returns the destination data used by the application.
 
-## Deploy on Vercel
+```text
+GET /api/destinations
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+When running locally, visit:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[http://localhost:3000/api/destinations](http://localhost:3000/api/destinations)
+
+## 🎯 Project Objectives
+
+- Promote Ethiopian tourism through an accessible digital experience.
+- Make discovering destinations and planning trips easier.
+- Apply modern frontend development techniques using Next.js and React.
+- Demonstrate reusable components, API-based data fetching, responsive design, and deployment.
+- Build a portfolio-quality capstone project.
+
+## 🔮 Future Improvements
+
+- User registration and secure authentication.
+- Save favorite destinations and personalized itineraries.
+- Persist trip plans across sessions and devices.
+- Add hotel recommendations and transport information.
+- Integrate maps and route planning.
+- Connect to a database for persistent user and trip data.
+- Add automated tests and improve accessibility.
+
+## 👩‍💻 Developer
+
+**Elizabeth Debebe**
+
+- GitHub: [Elizabethdebebe1234](https://github.com/Elizabethdebebe1234)
+- Project Repository: [Ethio-Trip](https://github.com/Elizabethdebebe1234/Ethio-trip)
+- Live Demo: [ethio-trip-coral.vercel.app](https://ethio-trip-coral.vercel.app/)
+
+---
+
+*Ethio-Trip — Discover the beauty, history, culture, and landscapes of Ethiopia.* 🇪🇹
