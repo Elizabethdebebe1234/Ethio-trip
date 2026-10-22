@@ -95,6 +95,17 @@ export default function Navbar() {
           Experiences
         </Link>
 
+        
+<Link
+  href="/trip-updates"
+  className={`nav-link ${
+    isActive("/trip-updates") ? "active" : ""
+  }`}
+>
+  Trip Updates
+</Link>
+
+
         <Link
           href="/hotels"
           className={`nav-link ${isActive("/hotels") ? "active" : ""}`}

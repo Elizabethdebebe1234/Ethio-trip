@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import useSWR from "swr";
+import EthiopiaMapLoader from "../../components/EthiopiaMapLoader";
 
 const categories = [
   "All Destinations",
@@ -22,24 +23,23 @@ const fetcher = async (url) => {
 };
 
 export default function DestinationsPage() {
-  const {
-    data,
-    error,
-    isLoading,
-    mutate,
-  } = useSWR("/api/destinations", fetcher, {
-    revalidateOnFocus: false,
-  });
+  const { data, error, isLoading, mutate } = useSWR(
+    "/api/destinations",
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  );
 
   const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All Destinations");
+  const [activeCategory, setActiveCategory] = useState(
+    "All Destinations"
+  );
 
   const destinations = (data || []).map((destination) => ({
     ...destination,
     tags: destination.tags || destination.highlights || [],
-    duration:
-      destination.duration ||
-      `${destination.days || 1} days`,
+    duration: destination.duration || `${destination.days || 1} days`,
     category:
       destination.category === "Nature & Culture"
         ? "Nature & Adventure"
@@ -71,7 +71,9 @@ export default function DestinationsPage() {
   if (isLoading) {
     return (
       <main className="destinations-page">
-        <p className="destinations-container">Loading destinations...</p>
+        <p className="destinations-container">
+          Loading destinations...
+        </p>
       </main>
     );
   }
@@ -81,11 +83,12 @@ export default function DestinationsPage() {
       <main className="destinations-page">
         <div className="destinations-container">
           <h2>Something went wrong</h2>
-          <p>We couldn't load the destinations right now. Please try again.</p>
+          <p>
+            We could not load the destinations right now. Please try again.
+          </p>
           <button type="button" onClick={() => mutate()}>
             Try Again
-          </button>
-          {" "}
+          </button>{" "}
           <Link href="/destinations">Back to Destinations</Link>
         </div>
       </main>
@@ -100,13 +103,19 @@ export default function DestinationsPage() {
             <span className="destinations-eyebrow">
               YOUR JOURNEY STARTS HERE
             </span>
+
             <h1>Discover the wonders of Ethiopia.</h1>
+
             <p>
               From ancient heritage to breathtaking highlands, find the
               places that make your Ethiopian journey unforgettable.
             </p>
-            <a className="destinations-hero-button" href="#explore">
-              Explore destinations <span aria-hidden="true">↓</span>
+
+            <a
+              className="destinations-hero-button"
+              href="#explore"
+            >
+              Explore destinations
             </a>
           </div>
         </div>
@@ -121,12 +130,15 @@ export default function DestinationsPage() {
             <span className="destinations-eyebrow">
               FIND YOUR NEXT ADVENTURE
             </span>
+
             <h2>Explore Ethiopia</h2>
+
             <p>
               Search places, discover experiences, and start building your
               own journey.
             </p>
           </div>
+
           <span className="destinations-count">
             {filteredDestinations.length}{" "}
             {filteredDestinations.length === 1 ? "place" : "places"}
@@ -141,7 +153,6 @@ export default function DestinationsPage() {
         </label>
 
         <div className="destinations-search">
-          <span aria-hidden="true">⌕</span>
           <input
             id="destination-search"
             type="search"
@@ -149,6 +160,7 @@ export default function DestinationsPage() {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
           />
+
           {search && (
             <button
               type="button"
@@ -156,7 +168,7 @@ export default function DestinationsPage() {
               onClick={() => setSearch("")}
               aria-label="Clear search"
             >
-              ×
+              Clear
             </button>
           )}
         </div>
@@ -181,10 +193,15 @@ export default function DestinationsPage() {
           ))}
         </div>
 
+        <EthiopiaMapLoader />
+
         {filteredDestinations.length > 0 ? (
           <div className="destinations-grid">
             {filteredDestinations.map((destination) => (
-              <article className="destination-card" key={destination.id}>
+              <article
+                className="destination-card"
+                key={destination.id}
+              >
                 <Link
                   href={`/destinations/${destination.id}`}
                   className="destination-image-link"
@@ -201,11 +218,9 @@ export default function DestinationsPage() {
                     <span className="destination-category">
                       {destination.category}
                     </span>
-                    <span
-                      className="destination-image-arrow"
-                      aria-hidden="true"
-                    >
-                      ↗
+
+                    <span className="destination-image-arrow">
+                      View
                     </span>
                   </div>
                 </Link>
@@ -214,11 +229,13 @@ export default function DestinationsPage() {
                   <span className="destination-region">
                     {destination.region}
                   </span>
+
                   <h3>
                     <Link href={`/destinations/${destination.id}`}>
                       {destination.name}
                     </Link>
                   </h3>
+
                   <p>{destination.description}</p>
 
                   <div className="destination-tags">
@@ -228,12 +245,10 @@ export default function DestinationsPage() {
                   </div>
 
                   <div className="destination-card-footer">
-                    <span>
-                      <span aria-hidden="true">◷</span>{" "}
-                      {destination.duration}
-                    </span>
+                    <span>{destination.duration}</span>
+
                     <Link href={`/destinations/${destination.id}`}>
-                      Discover more <span aria-hidden="true">→</span>
+                      Discover more
                     </Link>
                   </div>
                 </div>
@@ -242,9 +257,12 @@ export default function DestinationsPage() {
           </div>
         ) : (
           <div className="destinations-empty">
-            <span aria-hidden="true">⌕</span>
             <h3>No destinations found</h3>
-            <p>Try another search or choose a different category.</p>
+
+            <p>
+              Try another search or choose a different category.
+            </p>
+
             <button
               type="button"
               onClick={() => {
@@ -258,7 +276,7 @@ export default function DestinationsPage() {
         )}
       </section>
 
-           <section className="destinations-planner">
+      <section className="destinations-planner">
         <div className="destinations-container destinations-planner-inner">
           <div>
             <span className="destinations-eyebrow">
@@ -273,8 +291,11 @@ export default function DestinationsPage() {
             </p>
           </div>
 
-          <Link href="/itinerary" className="destinations-planner-button">
-            Plan my trip <span aria-hidden="true">→</span>
+          <Link
+            href="/itinerary"
+            className="destinations-planner-button"
+          >
+            Plan my trip
           </Link>
         </div>
       </section>

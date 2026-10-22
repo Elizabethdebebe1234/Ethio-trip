@@ -72,6 +72,59 @@ const accommodationCost = chosenAccommodation
     );
   }
 
+
+function downloadItineraryCSV() {
+  if (selectedDestinations.length === 0) {
+    setSubmissionMessage("Please add at least one destination before downloading your report.");
+    return;
+  }
+
+  const escapeCSV = (value) =>
+    `"${String(value ?? "").replace(/"/g, '""')}"`;
+
+  const rows = [
+    [
+      "Destination",
+      "Region",
+      "Suggested Days",
+      "Daily Budget (ETB)",
+      "Accommodation",
+      "Departure Date",
+      "Return Date",
+    ],
+    ...selectedDestinations.map((destination) => [
+      destination.name,
+      destination.region,
+      destination.days,
+      destination.dailyBudget,
+      chosenAccommodation?.name || "Not selected",
+      startDate || "",
+      endDate || "",
+    ]),
+  ];
+
+  const csv = rows
+    .map((row) => row.map(escapeCSV).join(","))
+    .join("\r\n");
+
+  const blob = new Blob(["\uFEFF" + csv], {
+    type: "text/csv;charset=utf-8;",
+  });
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "ethio-trip-itinerary.csv";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+
+  setSubmissionMessage("Your itinerary CSV report has been downloaded.");
+}
+
+
   async function handleSubmitTrip() {
   setSubmissionMessage("");
 
@@ -532,6 +585,21 @@ const dailySchedule = selectedDestinations.reduce(
       ? "Submitting..."
       : "Submit Trip Request"}
 </button>
+
+
+<div className="itinerary-action-buttons">
+  <button
+    type="button"
+    className="trip-submit-button"
+    onClick={downloadItineraryCSV}
+    disabled={selectedDestinations.length === 0}
+  >
+    Download CSV Report
+  </button>
+
+  {/* Keep your existing Submit Trip Request button here */}
+</div>
+
 
 {submissionMessage && (
   <p role="status" aria-live="polite">

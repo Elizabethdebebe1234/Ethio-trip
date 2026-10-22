@@ -1,5 +1,4 @@
-
-import Link from "next/link";
+﻿import Link from "next/link";
 
 export const metadata = {
   title: "Discover Ethiopia",
@@ -12,7 +11,7 @@ export const metadata = {
 
 const destinations = [
   {
-    id: "Lalibela",
+    id: "lalibela",
     name: "Lalibela",
     region: "Amhara Region",
     category: "History & Culture",
@@ -22,7 +21,7 @@ const destinations = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlBAnVIdcBS7Kmy4wobnoTVYdCwz_i8JNLq-laUpBiyg&s=10",
   },
   {
-    id: "Simien-mountains",
+    id: "simien-mountains",
     name: "Simien-mountains",
     region: "Northern Ethiopia",
     category: "Nature & Adventure",
@@ -32,7 +31,7 @@ const destinations = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnf0bB3cnAQGqZxqDr3cbF9TJhMLGhkuw_sqLEijd2CA&s=10",
   },
   {
-    id: "Lake-tana",
+    id: "lake-tana",
     name: "Lake-tana",
     region: "Bahir Dar, Amhara",
     category: "Nature & Culture",
@@ -45,19 +44,19 @@ const destinations = [
 
 const experiences = [
   {
-    icon: "✦",
+    icon: "*",
     title: "Cultural heritage",
     description:
       "Explore ancient architecture, traditions, local crafts, and living history.",
   },
   {
-    icon: "⌁",
+    icon: "+",
     title: "Nature & adventure",
     description:
       "Discover mountains, lakes, wildlife, and remarkable landscapes.",
   },
   {
-    icon: "◇",
+    icon: "O",
     title: "Food & local life",
     description:
       "Experience Ethiopian cuisine, coffee ceremonies, and welcoming communities.",
@@ -67,8 +66,6 @@ const experiences = [
 export default function HomePage() {
   return (
     <main>
-      
-
       <section className="hero">
         <div className="hero-shade" />
 
@@ -92,10 +89,15 @@ export default function HomePage() {
 
           <div className="hero-actions">
             <Link href="#destinations" className="button-primary">
-              Explore Ethiopia <span aria-hidden="true">→</span>
+              Explore Ethiopia <span aria-hidden="true">-&gt;</span>
             </Link>
+
             <Link href="/itinerary" className="button-outline">
               Build my itinerary
+            </Link>
+
+            <Link href="/dashboard" className="button-dashboard">
+              View Dashboard
             </Link>
           </div>
 
@@ -106,9 +108,9 @@ export default function HomePage() {
         </div>
 
         <div className="hero-side-note">
-          <span>09°01&apos; N</span>
+          <span>09 degrees 01 minutes N</span>
           <span className="side-note-divider" />
-          <span>ETHIOPIA · EAST AFRICA</span>
+          <span>ETHIOPIA - EAST AFRICA</span>
         </div>
       </section>
 
@@ -134,7 +136,7 @@ export default function HomePage() {
           </div>
 
           <Link href="/destinations" className="text-link">
-            View all destinations <span aria-hidden="true">→</span>
+            View all destinations <span aria-hidden="true">-&gt;</span>
           </Link>
         </div>
 
@@ -156,7 +158,7 @@ export default function HomePage() {
                   0{index + 1}
                 </span>
                 <span className="destination-arrow" aria-hidden="true">
-                  ↗
+                  -
                 </span>
               </Link>
 
@@ -166,17 +168,17 @@ export default function HomePage() {
                 </p>
                 <h3>{destination.name}</h3>
                 <p className="destination-region">
-                  <span aria-hidden="true">⌖</span> {destination.region}
+                  <span aria-hidden="true">Location:</span> {destination.region}
                 </p>
                 <p className="destination-description">
                   {destination.description}
                 </p>
                 <Link
-                    href={`/destinations/${destination.id.toLowerCase()}`}
-                      className="destination-link"
-                    >
-                Discover this place <span aria-hidden="true">→</span>
-                         </Link>
+                  href={`/destinations/${destination.id}`}
+                  className="destination-link"
+                >
+                  Discover this place <span aria-hidden="true">-&gt;</span>
+                </Link>
               </div>
             </article>
           ))}
@@ -206,10 +208,77 @@ export default function HomePage() {
               <h3>{experience.title}</h3>
               <p>{experience.description}</p>
               <Link href="/destinations" className="experience-link">
-                Find your experience <span aria-hidden="true">→</span>
+                Find your experience <span aria-hidden="true">-&gt;</span>
               </Link>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="travel-tools-section" id="travel-tools">
+        <div className="travel-tools-heading">
+          <p className="eyebrow">PLAN WITH CONFIDENCE</p>
+          <h2>
+            Your travel tools<span>.</span>
+          </h2>
+          <p>
+            Discover destinations, follow trip updates, and prepare a
+            personalized Ethiopian adventure.
+          </p>
+        </div>
+
+        <div className="travel-tools-grid">
+          <article className="travel-tool-card">
+            <span className="travel-tool-icon" aria-hidden="true">
+              Location
+            </span>
+            <h3>Explore Destinations</h3>
+            <p>
+              Browse remarkable places, regions, and experiences across Ethiopia.
+            </p>
+            <Link href="/destinations" className="travel-tool-link">
+              Discover places <span aria-hidden="true">-&gt;</span>
+            </Link>
+          </article>
+
+          <article className="travel-tool-card">
+            <span className="travel-tool-icon" aria-hidden="true">
+              Updates
+            </span>
+            <h3>Live Trip Updates</h3>
+            <p>
+              Watch a demonstration of real-time trip messages powered by SSE.
+            </p>
+            <Link href="/trip-updates" className="travel-tool-link">
+              View live updates <span aria-hidden="true">-&gt;</span>
+            </Link>
+          </article>
+
+          <article className="travel-tool-card">
+            <span className="travel-tool-icon" aria-hidden="true">
+              Plan
+            </span>
+            <h3>Build Your Itinerary</h3>
+            <p>
+              Select destinations, organize your journey, and estimate your budget.
+            </p>
+            <Link href="/itinerary" className="travel-tool-link">
+              Start planning <span aria-hidden="true">-&gt;</span>
+            </Link>
+          </article>
+
+          <article className="travel-tool-card">
+            <span className="travel-tool-icon" aria-hidden="true">
+              Export
+            </span>
+            <h3>Export Your Report</h3>
+            <p>
+              Prepare your itinerary and export your travel plan as a CSV file.
+            </p>
+            <Link href="/itinerary" className="travel-tool-link">
+              Open itinerary planner <span aria-hidden="true">-&gt;</span>
+            </Link>
+          </article>
         </div>
       </section>
 
@@ -223,11 +292,9 @@ export default function HomePage() {
           </p>
         </div>
         <Link href="/itinerary" className="button-primary">
-          Start planning <span aria-hidden="true">→</span>
+          Start planning <span aria-hidden="true">-&gt;</span>
         </Link>
       </section>
-
-      
     </main>
   );
 }

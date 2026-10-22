@@ -3186,3 +3186,519 @@ button.header-signin:disabled {
   object-fit: cover;
   object-position: center;
 }
+
+
+/* ========================================
+   ETHIO-TRIP DASHBOARD NAVIGATION BUTTONS
+======================================== */
+
+.button-dashboard,
+.button-trip-history {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.85rem 1.4rem;
+  border: 1px solid #d5a94f;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Gold dashboard button */
+.button-dashboard {
+  color: #173f2d;
+  background-color: #e5c16c;
+  border-color: #e5c16c;
+}
+
+.button-dashboard:hover {
+  color: #ffffff;
+  background-color: #173f2d;
+  border-color: #173f2d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(23, 63, 45, 0.18);
+}
+
+/* Ivory trip history button */
+.button-trip-history {
+  color: #ffffff;
+  background-color: rgba(23, 63, 45, 0.2);
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.button-trip-history:hover {
+  color: #173f2d;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Visible keyboard focus */
+.button-dashboard:focus-visible,
+.button-trip-history:focus-visible {
+  outline: 3px solid #e5c16c;
+  outline-offset: 4px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .button-dashboard,
+  .button-trip-history {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.8rem 1rem;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .button-dashboard,
+  .button-trip-history {
+    transition: none;
+  }
+
+  .button-dashboard:hover,
+  .button-trip-history:hover {
+    transform: none;
+  }
+}
+
+/* Ethio-Trip dashboard and trip history polish */
+
+.ethio-dashboard-page,
+.ethio-trips-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top right, rgba(215, 173, 83, 0.12), transparent 35%),
+    #f8f7f2;
+  color: #24352c;
+}
+
+.ethio-page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.ethio-dashboard-page h1,
+.ethio-trips-page h1 {
+  color: #163c2c;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+
+.ethio-stat-card {
+  position: relative;
+  overflow: hidden;
+  border-color: #e6e1d4;
+  border-radius: 20px;
+  box-shadow: 0 5px 18px rgba(22, 60, 44, 0.045);
+  transition: transform 180ms ease, box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.ethio-stat-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #163c2c, #d5a640);
+  content: "";
+}
+
+.ethio-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: #d7c28d;
+  box-shadow: 0 12px 28px rgba(22, 60, 44, 0.09);
+}
+
+.ethio-stat-card p:first-child {
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.ethio-stat-card p:last-child {
+  overflow-wrap: anywhere;
+}
+
+.ethio-chart-grid > * {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e6e1d4;
+  border-radius: 20px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 5px 18px rgba(22, 60, 44, 0.045);
+}
+
+.ethio-dashboard-cta {
+  gap: 24px;
+  border: 1px solid rgba(213, 166, 64, 0.35);
+  background: linear-gradient(125deg, #123728, #20563d);
+  box-shadow: 0 14px 32px rgba(22, 60, 44, 0.15);
+}
+
+.ethio-dashboard-cta a {
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.ethio-dashboard-cta a:hover {
+  transform: translateY(-2px);
+}
+
+.ethio-trip-table {
+  border-color: #e6e1d4;
+  box-shadow: 0 10px 30px rgba(22, 60, 44, 0.07);
+}
+
+.ethio-trip-table table {
+  border-spacing: 0;
+}
+
+.ethio-trip-table caption {
+  background: #fffdf8;
+  line-height: 1.6;
+}
+
+.ethio-trip-table thead th {
+  white-space: nowrap;
+  letter-spacing: 0.015em;
+}
+
+.ethio-trip-table thead th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.ethio-trip-row {
+  transition: background-color 160ms ease;
+}
+
+.ethio-trip-row th,
+.ethio-trip-row td {
+  vertical-align: middle;
+  line-height: 1.6;
+}
+
+.ethio-trips-page nav[aria-label="Trip history pagination"] a {
+  border-color: #d8d8ca;
+  font-weight: 600;
+  transition: background 160ms ease, border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.ethio-trips-page nav[aria-label="Trip history pagination"] a:hover {
+  border-color: #b99a4b;
+  background: #fffdf8;
+}
+
+.ethio-trips-page nav[aria-label="Trip history pagination"] a:not([aria-disabled="true"]):hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .ethio-dashboard-page,
+  .ethio-trips-page {
+    padding-top: 28px;
+    padding-bottom: 40px;
+  }
+
+  .ethio-stat-card {
+    border-radius: 16px;
+  }
+
+  .ethio-chart-grid > * {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .ethio-dashboard-cta {
+    padding: 22px;
+  }
+
+  .ethio-trip-table {
+    border-radius: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ethio-stat-card,
+  .ethio-trip-row,
+  .ethio-dashboard-cta a,
+  .ethio-trips-page nav[aria-label="Trip history pagination"] a {
+    transition: none;
+  }
+
+  .ethio-stat-card:hover,
+  .ethio-dashboard-cta a:hover,
+  .ethio-trips-page nav[aria-label="Trip history pagination"] a:hover {
+    transform: none;
+  }
+}
+
+
+/* Ethio-Trip: Travel Tools section */
+.travel-tools-section {
+  padding: 76px 7%;
+  background: #f6f3eb;
+}
+
+.travel-tools-heading {
+  max-width: 650px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.travel-tools-heading h2 {
+  color: #163c2c;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(30px, 4vw, 43px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.travel-tools-heading h2 span {
+  color: #c99a3d;
+}
+
+.travel-tools-heading > p:last-child {
+  margin-top: 14px;
+  color: #697168;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.travel-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.travel-tool-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 27px 22px;
+  background: #fffdf8;
+  border: 1px solid #e3ded2;
+  border-radius: 8px;
+  transition: transform 180ms ease, box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.travel-tool-card:hover {
+  transform: translateY(-4px);
+  border-color: #c5ad7b;
+  box-shadow: 0 12px 28px rgba(22, 60, 44, 0.08);
+}
+
+.travel-tool-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 23px;
+  place-items: center;
+  color: #163c2c;
+  background: #e8eee5;
+  border: 1px solid #dce5d8;
+  border-radius: 8px;
+  font-size: 27px;
+}
+
+.travel-tool-card h3 {
+  color: #163c2c;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.travel-tool-card p {
+  flex-grow: 1;
+  margin: 12px 0 22px;
+  color: #697168;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.travel-tool-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  color: #24583c;
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+  border-bottom: 1px solid #c99a3d;
+}
+
+.travel-tool-link:hover {
+  color: #9a7026;
+}
+
+.travel-tool-link:focus-visible {
+  outline: 3px solid #c99a3d;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (max-width: 1050px) {
+  .travel-tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .travel-tools-section {
+    padding: 52px 6%;
+  }
+
+  .travel-tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .travel-tool-card {
+    padding: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .travel-tool-card {
+    transition: none;
+  }
+
+  .travel-tool-card:hover {
+    transform: none;
+  }
+}
+
+.itinerary-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.itinerary-action-buttons button {
+  flex: 1 1 220px;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.itinerary-action-buttons button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 520px) {
+  .itinerary-action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .itinerary-action-buttons button {
+    width: 100%;
+  }
+}
+/* Interactive Ethiopia map */
+.ethiopia-map-section {
+  width: 100%;
+  margin: 48px auto;
+}
+
+.ethiopia-map-heading {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.ethiopia-map-eyebrow {
+  color: #c69b3c;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.ethiopia-map-heading h2 {
+  margin: 8px 0 12px;
+  color: #163c2c;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-weight: 800;
+}
+
+.ethiopia-map-heading > p:last-child {
+  color: #626b64;
+  line-height: 1.7;
+}
+
+.ethiopia-map-frame {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #e6e2d5;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(22, 60, 44, 0.12);
+}
+
+.ethiopia-map {
+  width: 100%;
+  height: 480px;
+  z-index: 1;
+}
+
+.ethiopia-map-popup {
+  max-width: 230px;
+  line-height: 1.5;
+}
+
+.ethiopia-map-popup strong {
+  color: #163c2c;
+  font-size: 1rem;
+}
+
+.ethiopia-map-popup p {
+  margin: 5px 0;
+}
+
+.ethiopia-map-note {
+  margin-top: 10px;
+  color: #777;
+  font-size: 0.78rem;
+}
+
+.ethiopia-map-loading {
+  display: grid;
+  min-height: 300px;
+  place-items: center;
+  border-radius: 18px;
+  background: #f5f2e8;
+  color: #163c2c;
+}
+
+@media (max-width: 600px) {
+  .ethiopia-map {
+    height: 360px;
+  }
+
+  .ethiopia-map-section {
+    margin: 32px auto;
+  }
+}
