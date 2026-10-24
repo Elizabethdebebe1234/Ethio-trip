@@ -529,21 +529,7 @@ const dailySchedule = selectedDestinations.reduce(
                     Remove
                   </button>
 
-                  <div className="trip-submit-area">
- 
-
-{submissionMessage && (
-  <p role="status" aria-live="polite">
-    {submissionMessage}
-  </p>
-)}
-
-  {submissionMessage && (
-    <p role="status" aria-live="polite">
-      {submissionMessage}
-    </p>
-  )}
-</div>
+                  
                 </li>
               ))}
             </ul>
@@ -573,18 +559,27 @@ const dailySchedule = selectedDestinations.reduce(
             prices or confirmed quotations.
           </p>
 
-          <button
-  type="button"
-  className="trip-submit-button"
-  onClick={handleSubmitTrip}
-  disabled={isSubmitting || requestSubmitted}
->
-  {requestSubmitted
-    ? "Request Submitted"
-    : isSubmitting
-      ? "Submitting..."
-      : "Submit Trip Request"}
-</button>
+         <div className="trip-submit-row">
+  <button
+    type="button"
+    className="trip-submit-button"
+    onClick={handleSubmitTrip}
+    disabled={isSubmitting || requestSubmitted}
+  >
+    {requestSubmitted
+      ? "Request Submitted"
+      : isSubmitting
+        ? "Submitting..."
+        : "Submit Trip Request"}
+  </button>
+
+  {hasValidDates && selectedDestinations.length > 0 &&
+    plannedTripDays < totalDays && (
+      <p className="trip-duration-warning" role="status">
+        {tripDurationMessage}
+      </p>
+    )}
+</div>
 
 
 <div className="itinerary-action-buttons">
