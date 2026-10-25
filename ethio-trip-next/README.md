@@ -4,7 +4,7 @@
 
 Ethio-Trip is a travel planning web application designed to help users explore destinations in Ethiopia and organize their trips. Users can browse destinations, review suggested trip durations and estimated budgets, choose accommodation, build an itinerary, and download their itinerary as a CSV report.
 
-**Live Application:** https://ethio-trip-coral.vercel.app/
+**Live Application:** https://ethio-trip-f7d5.vercel.app/
 
 **GitHub Repository:** https://github.com/Elizabethdebebe1234/Ethio-trip
 
@@ -12,7 +12,7 @@ Ethio-Trip is a travel planning web application designed to help users explore d
 
 You can explore the Ethio-Trip application using the customer demo account.
 
-- **Live Application:** https://ethio-trip-coral.vercel.app/
+- **Live Application:** https://ethio-trip-f7d5.vercel.app/
 - **Role:** Customer
 - **Username:** [ customer ]
 - **Password:** [ ReplaceWithCustomerPassword123! ]
@@ -103,7 +103,7 @@ See `REVIEW.md` for the peer code review.
 
 The application is deployed on Vercel:
 
-https://ethio-trip-coral.vercel.app/
+https://ethio-trip-f7d5.vercel.app/
 
 ## Project Status
 
