@@ -1,36 +1,48 @@
-﻿# Ethio-Trip Performance Report
+﻿# Performance and Optimization
 
-## Environment
-- Framework: Next.js
-- Test mode: Production build (`npm run build`) and production server (`npm run start`)
-- Browser: Chrome Lighthouse
+## Overview
 
-## Core Web Vitals targets
-- LCP: 2.5 seconds or less
-- CLS: 0.1 or less
-- INP: 200 milliseconds or less
+Ethio-Trip uses Next.js and React to organize pages, components, and application routes.
 
-## Before-and-after measurements
+## Optimization Strategies
 
-| Metric | Before optimisation | After optimisation |
+- Use the Next.js App Router for structured routing.
+- Separate reusable interface components where appropriate.
+- Use SWR in implemented areas to manage fetching and cached responses.
+- Use `cache: "no-store"` for session checks where configured.
+- Use CSS for responsive layouts.
+- Load interactive map functionality through dedicated map components.
+- Keep trip calculations and CSV generation in the browser where appropriate.
+- Use a production build to identify compilation errors before deployment.
+
+## Performance Measurements
+
+Performance measurements must be collected from actual tests. Do not enter estimated values as measured results.
+
+| Metric | Before optimization | After optimization |
 |---|---|---|
-| LCP | Not measured yet | Not measured yet |
-| CLS | Not measured yet | Not measured yet |
-| INP | Not measured yet | Not measured yet |
-| Lighthouse Performance score | Not measured yet | Not measured yet |
+| Largest Contentful Paint (LCP) | Not measured | Not measured |
+| First Contentful Paint (FCP) | Not measured | Not measured |
+| Cumulative Layout Shift (CLS) | Not measured | Not measured |
+| Production build | Verify using `npm run build` | Verify after final changes |
 
-## Optimisation work
-- [x] Production build completes successfully.
-- [x] `.env.example` exists with placeholder values.
-- [ ] Replace applicable HTML image elements with `next/image`.
-- [ ] Verify image dimensions, `sizes`, and hero-image priority.
-- [ ] Verify root font configuration uses `next/font`.
-- [ ] Check whether third-party scripts need `next/script`.
-- [ ] Verify `.env.local` is ignored by Git.
-- [ ] Run Lighthouse against the production server.
-- [ ] Record actual measurements above.
+## How to Measure
 
-## Notes
-Measurements must be recorded from actual Lighthouse runs.
-Do not claim an improvement until the before-and-after results
-have been measured under comparable conditions.
+1. Open the deployed application in Chrome.
+2. Open Developer Tools.
+3. Select the Lighthouse tab.
+4. Run an audit for mobile and desktop.
+5. Record the actual LCP, FCP, and CLS values.
+6. Compare results before and after any optimization, using the same test conditions.
+
+## Limitations
+
+No before-and-after performance figures are claimed in this document because verified measurements have not yet been supplied.
+
+## Future Optimization
+
+- Measure and optimize image loading.
+- Review bundle size and unnecessary JavaScript.
+- Improve loading and error states.
+- Audit accessibility and responsive behavior.
+- Repeat Lighthouse tests after significant changes.

@@ -1,64 +1,48 @@
-
-@'
-# Ethio-Trip Authentication
+# Authentication, Authorization, and Data Security
 
 ## Overview
-Ethio-Trip uses a sign-in form with two roles: customer and guide.
-Credentials are currently configured through server-side environment
-variables. This is a demonstration authentication setup, not a
-database-backed registration system.
 
-## Sign-in flow
-1. The user selects Customer or Trip guide.
-2. The sign-in form sends the username, password, and role to
-   POST /api/auth/login.
-3. The server compares the submitted credentials with environment
-   variables using a timing-safe comparison.
-4. On success, the server creates a signed session token.
-5. The token is stored in the ethio_trip_session cookie.
-6. The user is redirected to the dashboard for their role.
+Ethio-Trip implements role-based sign-in for customers and guides using server-side authentication logic and session cookies.
 
-## Sessions and cookies
-- Tokens are signed with HMAC-SHA256.
-- Sessions expire after seven days.
-- Cookies use HttpOnly and SameSite=Lax.
-- Secure is enabled in production.
-- SESSION_SECRET must be at least 32 characters long.
-- POST /api/auth/logout clears the session cookie.
+## Sign-In
+
+The login API accepts a role, username, and password. It validates the submitted credentials against the configured environment variables.
+
+If the credentials are valid, the server creates a session token and sets it in a cookie.
+
+The application uses the session endpoint to check whether a user is authenticated and to identify the user's role.
 
 ## Authorization
-The customer page requires a valid customer session.
-The guide page requires a valid guide session.
-The proxy checks for a session cookie before protected pages continue.
-Server-side getSession() verifies the token signature and expiry.
-Page-level role checks remain necessary because a cookie's presence
-alone does not prove that the session is valid.
 
-## Environment configuration
-Copy .env.example to .env.local and replace its placeholder values.
-Do not commit .env.local or expose credentials in client-side code.
-Use a strong, unique SESSION_SECRET in production.
+The application distinguishes customer and guide roles. Protected pages and actions should verify the current session and ensure the user has the appropriate role.
 
-## Current limitations
-- Accounts are configured with environment variables rather than
-  stored in a user database.
-- Passwords are compared with configured values; password hashing
-  and database-backed account registration are not implemented.
-- Trip request data and status changes currently use browser-side
-  storage. They are not protected server-side records and should not
-  be used for real customer bookings.
-- Any future API that reads or changes private data must verify the
-  session and role on the server, and enforce ownership where needed.
-- The proxy performs an early cookie-presence check; it does not
-  replace cryptographic session verification in server code.
+The interface redirecting a user is not sufficient security by itself. Sensitive operations must enforce authorization on the server.
 
-## Verification checklist
-- [ ] Missing session redirects from /customer and /guide to /signin.
-- [ ] Invalid or expired tokens are rejected by server-side checks.
-- [ ] Customers cannot access the guide dashboard.
-- [ ] Guides cannot access the customer dashboard.
-- [ ] Sign-out clears the session cookie.
-- [ ] Production build completes successfully.
-'@ | Set-Content -Encoding utf8 .\AUTH.md
+## Session Cookies
 
-Write-Host "Created AUTH.md" -ForegroundColor Green
+Session cookies allow the browser to send session information with requests to the application.
+
+Cookie security options should be configured appropriately, including HttpOnly, Secure in production, and an appropriate SameSite policy.
+
+## Environment Variables
+
+Authentication credentials must be configured through environment variables in the local development environment and the deployment platform.
+
+Required login variables include:
+
+- `CUSTOMER_USERNAME`
+- `CUSTOMER_PASSWORD`
+- `GUIDE_USERNAME`
+- `GUIDE_PASSWORD`
+
+The application may require additional session-related configuration depending on its authentication implementation.
+
+Real credentials and secret values must never be committed to GitHub.
+
+## Security Limitations
+
+The current credential-based approach is suitable for demonstrating authentication concepts but is not a replacement for a complete production identity system.
+
+Future improvements could include securely hashed user passwords, database-backed user accounts, session expiration and revocation, login rate limiting, and stronger account management.
+
+Protected API routes must independently validate authentication and authorization before performing sensitive operations.

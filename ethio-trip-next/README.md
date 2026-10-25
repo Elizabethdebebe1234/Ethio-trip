@@ -1,52 +1,56 @@
-# 🇪🇹 Ethio-Trip — Discover Ethiopia
+# Ethio-Trip - Ethiopian Travel Planning Application
 
-**Explore Ethiopia. Plan your journey. Experience its heritage.**
+## Project Overview
 
-Ethio-Trip is a Next.js tourism web application designed to help travelers discover Ethiopia's beautiful destinations, explore cultural and historical attractions, and plan memorable trips.
+Ethio-Trip is a travel planning web application designed to help users explore destinations in Ethiopia and organize their trips. Users can browse destinations, review suggested trip durations and estimated budgets, choose accommodation, build an itinerary, and download their itinerary as a CSV report.
 
-## 🌐 Live Demo
+**Live Application:** https://ethio-trip-coral.vercel.app/
 
-**[Visit Ethio-Trip](https://ethio-trip-coral.vercel.app/)**
+**GitHub Repository:** https://github.com/Elizabethdebebe1234/Ethio-trip
 
-## ✨ Features
+## Demo Login Credentials
 
-- **Destination Explorer:** Discover Ethiopian destinations, including Lalibela, the Simien Mountains, Lake Tana, Harar, the Danakil Depression, Addis Ababa, Konso, the Bale Mountains, and Gondar.
-- **Destination Search and Filtering:** Explore destinations by category and find places of interest.
-- **Destination Details:** Learn about destinations, highlights, and travel recommendations.
-- **Trip Planning:** Plan trips using destination information, estimated durations, and daily budgets.
-- **Responsive Design:** Browse the application on desktop, tablet, and mobile devices.
-- **API Integration:** Load destination data through Next.js API routes.
-- **Ethiopian Identity:** A travel experience inspired by Ethiopia's cultural heritage, history, and natural beauty.
-- **User-Friendly Interface:** Clear navigation and destination cards make exploring easier.
+You can explore the Ethio-Trip application using the customer demo account.
 
-## 🛠️ Technologies Used
+- **Live Application:** https://ethio-trip-coral.vercel.app/
+- **Role:** Customer
+- **Username:** [ customer ]
+- **Password:** [ ReplaceWithCustomerPassword123! ]
 
-- **Next.js** — React framework for web applications
-- **React** — Component-based user interfaces
-- **JavaScript** — Application functionality
-- **CSS** — Layout, styling, and responsive design
-- **SWR** — Client-side data fetching and revalidation
-- **Next.js API Routes** — Destination data endpoints
-- **Git and GitHub** — Version control and source code management
-- **Vercel** — Deployment and hosting
+To access the guide account, please contact me to request the guide login credentials.
 
-## 📍 Featured Destinations
+**Note:** These credentials are provided for demonstration purposes only.
 
-| Destination | Category |
-|---|---|
-| Lalibela | History & Culture |
-| Simien Mountains | Nature & Adventure |
-| Lake Tana | Nature & Culture |
-| Harar | History & Culture |
-| Danakil Depression | Nature & Adventure |
-| Addis Ababa | City & Food |
-| Konso Cultural Landscape | History & Culture |
-| Bale Mountains | Nature & Adventure |
-| Gondar | History & Culture |
+## Features
 
-## 🚀 Run Locally
+- Explore Ethiopian travel destinations.
+- View individual destination details.
+- Plan trips by selecting destinations and travel dates.
+- Compare suggested trip duration with available travel dates.
+- View a day-by-day itinerary.
+- Select accommodation and estimate costs.
+- Download itinerary information as a CSV report.
+- Sign in with customer or guide roles.
+- Submit trip requests with pending status.
+- View interactive destination maps.
+- Use responsive pages on different screen sizes.
 
-### Prerequisites
+## Technologies
+
+- Next.js and React
+- JavaScript
+- Next.js App Router
+- CSS
+- SWR for data fetching and caching where implemented
+- Leaflet and React Leaflet for interactive maps
+- OpenStreetMap for map tiles
+- Browser localStorage for client-side trip history where implemented
+- Cookie-based session authentication
+- Vercel for deployment
+
+## Getting Started
+
+### Requirements
 
 - Node.js
 - npm
@@ -54,112 +58,53 @@ Ethio-Trip is a Next.js tourism web application designed to help travelers disco
 
 ### Installation
 
-1. Clone the repository:
+Clone the repository:
 
-   ```bash
-   git clone https://github.com/Elizabethdebebe1234/Ethio-trip.git
-   ```
+```bash
+git clone https://github.com/Elizabethdebebe1234/Ethio-trip.git
+cd Ethio-trip/ethio-trip-next
+npm install
+```
 
-2. Navigate to the Next.js application directory:
+Create a local `.env.local` file and configure the authentication variables required by the application. Never commit real passwords or secrets.
 
-   ```bash
-   cd Ethio-trip/ethio-trip-next
-   ```
+Start the development server:
 
-3. Install dependencies:
+```bash
+npm run dev
+```
 
-   ```bash
-   npm install
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open the application in your browser:
-
-   ```text
-   http://localhost:3000
-   ```
+Open http://localhost:3000 in your browser.
 
 ### Production Build
 
-To verify that the application can be built for production, run:
-
 ```bash
 npm run build
-```
-
-To start the production server locally:
-
-```bash
 npm run start
 ```
 
-## 📂 Project Structure
+## Data and Security
 
-```text
-ethio-trip-next/
-├── app/
-│   ├── api/
-│   │   └── destinations/
-│   │       └── route.js
-│   ├── destinations/
-│   ├── globals.css
-│   ├── layout.js
-│   └── page.js
-├── lib/
-│   └── destinations.js
-├── public/
-├── README.md
-├── AUTH.md
-├── DATA.md
-├── PERF.md
-└── package.json
-```
+See `DATA.md` for data fetching and caching, and `AUTH.md` for authentication and authorization details.
 
-*Note: The structure above highlights the main files and folders; your application may contain additional routes and components.*
+## Performance
 
-## 🧩 API Endpoint
+See `PERF.md` for optimization strategies and measured results.
 
-The destination API returns the destination data used by the application.
+## Future Improvements
 
-```text
-GET /api/destinations
-```
+See `FUTURE.md` for known limitations and planned enhancements.
 
-When running locally, visit:
+## Peer Review
 
-[http://localhost:3000/api/destinations](http://localhost:3000/api/destinations)
+See `REVIEW.md` for the peer code review.
 
-## 🎯 Project Objectives
+## Deployment
 
-- Promote Ethiopian tourism through an accessible digital experience.
-- Make discovering destinations and planning trips easier.
-- Apply modern frontend development techniques using Next.js and React.
-- Demonstrate reusable components, API-based data fetching, responsive design, and deployment.
-- Build a portfolio-quality capstone project.
+The application is deployed on Vercel:
 
-## 🔮 Future Improvements
+https://ethio-trip-coral.vercel.app/
 
-- User registration and secure authentication.
-- Save favorite destinations and personalized itineraries.
-- Persist trip plans across sessions and devices.
-- Add hotel recommendations and transport information.
-- Integrate maps and route planning.
-- Connect to a database for persistent user and trip data.
-- Add automated tests and improve accessibility.
+## Project Status
 
-## 👩‍💻 Developer
-
-**Elizabeth Debebe**
-
-- GitHub: [Elizabethdebebe1234](https://github.com/Elizabethdebebe1234)
-- Project Repository: [Ethio-Trip](https://github.com/Elizabethdebebe1234/Ethio-trip)
-- Live Demo: [ethio-trip-coral.vercel.app](https://ethio-trip-coral.vercel.app/)
-
----
-
-*Ethio-Trip — Discover the beauty, history, culture, and landscapes of Ethiopia.* 🇪🇹
+This project was developed as a full-stack web development capstone to demonstrate routing, interactive trip planning, authentication, data handling, and deployment.
