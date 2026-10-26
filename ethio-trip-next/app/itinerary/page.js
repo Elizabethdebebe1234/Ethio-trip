@@ -5,8 +5,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import destinations from "../../lib/destinations";
-import { createTripRequest } from "../../lib/tripRequests";
 import { availableDestinations } from "../../lib/destinations";
+
 
 export default function ItineraryPage() {
   const [selectedDestinations, setSelectedDestinations] = useState([]);
@@ -159,20 +159,35 @@ function downloadItineraryCSV() {
       return;
     }
 
-    createTripRequest({
-      startDate,
-      endDate,
-      destinations: selectedDestinations.map((destination) => ({
-        id: destination.id,
-        name: destination.name,
-        days: destination.days,
-      })),
-      accommodation: chosenAccommodation
-        ? chosenAccommodation.name
-        : "Not selected",
-      accommodationNights,
-      estimatedBudget: totalEstimatedBudget,
-    });
+    const saveResponse = await fetch("/api/trips", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    startDate,
+    endDate,
+    destinations: selectedDestinations.map((destination) => ({
+      id: destination.id,
+      name: destination.name,
+      days: destination.days,
+    })),
+    accommodation: chosenAccommodation
+      ? chosenAccommodation.name
+      : "Not selected",
+    accommodationNights,
+    estimatedBudget: totalEstimatedBudget,
+  }),
+});
+
+const result = await saveResponse.json();
+
+if (!saveResponse.ok) {
+  setSubmissionMessage(
+    result.error || "Could not save your trip request."
+  );
+  return;
+}
 
     setRequestSubmitted(true);
 
@@ -528,7 +543,6 @@ const dailySchedule = selectedDestinations.reduce(
                   >
                     Remove
                   </button>
-
                   
                 </li>
               ))}

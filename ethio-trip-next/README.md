@@ -10,12 +10,8 @@ Ethio-Trip is a travel planning web application designed to help users explore d
 
 ## Demo Login Credentials
 
-You can explore the Ethio-Trip application using the customer demo account.
 
-- **Live Application:** https://ethio-trip-f7d5.vercel.app/
-- **Role:** Customer
-- **Username:** [ customer ]
-- **Password:** [ ReplaceWithCustomerPassword123! ]
+
 
 To access the guide account, please contact me to request the guide login credentials.
 

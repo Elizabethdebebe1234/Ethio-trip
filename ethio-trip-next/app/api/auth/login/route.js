@@ -1,5 +1,6 @@
 
 import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 import {
   COOKIE_NAME,
   createSessionToken,
@@ -10,47 +11,78 @@ import {
 export async function POST(request) {
   try {
     const body = await request.json();
-
     const role = body.role;
-    const username =
-      typeof body.username === "string" ? body.username.trim() : "";
     const password =
       typeof body.password === "string" ? body.password : "";
 
-    if (
-      !["customer", "guide"].includes(role) ||
-      !username ||
-      !password
-    ) {
+    if (!["customer", "guide"].includes(role) || !password) {
       return NextResponse.json(
-        { error: "Enter your username and password." },
+        { error: "Enter your login details." },
         { status: 400 }
       );
     }
 
-    const expectedUsername =
-      role === "customer"
-        ? process.env.CUSTOMER_USERNAME
-        : process.env.GUIDE_USERNAME;
+    let username = "";
 
-    const expectedPassword =
-      role === "customer"
-        ? process.env.CUSTOMER_PASSWORD
-        : process.env.GUIDE_PASSWORD;
+    if (role === "guide") {
+      // Preserve the existing guide username/password authentication.
+      username =
+        typeof body.username === "string" ? body.username.trim() : "";
 
-    if (
-      !expectedUsername ||
-      !expectedPassword ||
-      !safeEqual(username, expectedUsername) ||
-      !safeEqual(password, expectedPassword)
-    ) {
-      return NextResponse.json(
-        { error: "Invalid credentials." },
-        { status: 401 }
+      const expectedUsername = process.env.GUIDE_USERNAME;
+      const expectedPassword = process.env.GUIDE_PASSWORD;
+
+      if (
+        !username ||
+        !expectedUsername ||
+        !expectedPassword ||
+        !safeEqual(username, expectedUsername) ||
+        !safeEqual(password, expectedPassword)
+      ) {
+        return NextResponse.json(
+          { error: "Invalid guide credentials." },
+          { status: 401 }
+        );
+      }
+    } else {
+      // Authenticate customers using their Supabase email account.
+      const email =
+        typeof body.email === "string"
+          ? body.email.trim().toLowerCase()
+          : "";
+
+      if (!email) {
+        return NextResponse.json(
+          { error: "Enter your email address." },
+          { status: 400 }
+        );
+      }
+
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL,
+        process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
       );
+
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error || !data.user || !data.session) {
+        return NextResponse.json(
+          {
+            error:
+              "Sign-in failed. Check your email and password, and confirm your email address if required.",
+          },
+          { status: 401 }
+        );
+      }
+
+      username = data.user.email || email;
     }
 
     const token = createSessionToken(username, role);
+
     const response = NextResponse.json({
       success: true,
       role,
